@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+test_one_access_right_user,test_one_access_right,model_test_one,sample_project_group_user,1,1,1,1
+test_wizard_access_right_user,test_one_access_right,model_test_wizard,sample_project_group_user,1,1,1,1
+test_one_line_access_right_user,test_one_access_right,model_test_one_line,sample_project_group_user,1,1,1,1

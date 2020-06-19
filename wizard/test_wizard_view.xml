@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+	
+	<!-- First Menu -->
+		<menuitem id="menu_first_wizard" name="Test One Wizard"
+			parent="menu_main" sequence="1"></menuitem>
+			
+		<record id="test_wizard_view_id" model="ir.ui.view">
+			<field name="name">test.one.form</field>
+			<field name="model">test.one</field>
+			<field name="arch" type="xml">
+				<form string="Test Wizard">
+					<div class="oe_title" >
+						<button name="print_csv" string="CSV Download"
+							type="object"
+							style="margin-left: 20px;"
+							class="btn-primary" />
+						<button name="print_pdf" string="PDF Download"
+							type="object"
+							style="margin-left: 20px;"
+							class="btn-primary" />
+					</div>
+					<footer>
+						<button string="Close" class="btn-default"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_test_wizard_view"
+			model="ir.actions.act_window">
+			<field name="name">Test Wizard</field>
+			<field name="res_model">test.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="view_id" ref="test_wizard_view_id" />
+		</record>
+
+<!-- Action Menu -->
+		<menuitem id="test_wizard_action_menu" name="Wizard 1"
+			sequence="1" parent="menu_first_wizard" action="action_test_wizard_view" />
+
+	</data>
+</odoo>

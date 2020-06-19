@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="report_test_template">
+	    <t t-call="web.html_container">
+	            <t t-call="web.external_layout">
+	             <t t-foreach="get_data_from_test_report" t-as="obj">
+	                <div class="page">
+	                    <h2>Test PDF</h2>
+	                    <table class="table table-sm o_main_table">
+			                <thead>
+			                    <tr>
+			                        <!-- TODO: remove in master -->
+			                        <t t-set="colspan" t-value="8"/>
+			                        <th class="text-left">Name</th>
+			                    </tr>
+			                </thead>
+			                 <tbody class="sale_tbody">
+			                        <t t-foreach="get_data_from_test_report" t-as="obj">
+			                            <tr t-foreach="obj['data']" t-as="test">
+			                                <td class="text-right"><t t-esc="test['name']"/></td>                                 
+			                            </tr>
+			                        </t>
+			                    </tbody>
+			            </table>
+	                </div>
+	             </t>
+	        </t>
+	    </t>
+	</template>
+</odoo>

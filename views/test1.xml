@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!-- Base Main Menu -->
+		<menuitem id="menu_main" name="TestProject"></menuitem>
+
+		<!-- First Menu -->
+		<menuitem id="menu_first" name="Test One Information"
+			parent="menu_main" sequence="1"></menuitem>
+
+		<!-- Form View -->
+		<record id="test_one_form_view" model="ir.ui.view">
+			<field name="name">Test One Information Form</field>
+			<field name="model">test.one</field>
+			<field name="arch" type="xml">
+				<form string="Test One Information">
+					<!-- <header>
+						<button name="submit_action" type="object" string="Submit" class="btn-primary" />
+						<button name="approve_action" type="object" string="Approve" class="btn-primary" />
+						<button name="draft_action" type="object" string="Draft" class="btn-primary" />
+						
+					</header> -->
+					<sheet>
+						<group col="2">
+							<group string="Test Information">
+								<label for="name" string="Test Name" />
+								<field name="name" nolabel="1" />
+								
+								<label for="age" string="Test Age" />
+								<field name="age" nolabel="1" />
+								
+								<label for="test_date" string="Test Date" />
+								<field name="test_date" nolabel="1" />
+								
+								<label for="test_type" string="Test Type" />
+								<field name="test_type" nolabel="1" />
+								
+								<label for="test_number" string="Test Number" />
+								<field name="test_number" nolabel="1" />
+								
+								<label for="test_price" string="Test Price" />
+								<field name="test_price" nolabel="1"/>
+								
+								<label for="test_validate" string="Test Validate" />
+								<field name="test_validate" nolabel="1"/>
+								
+							</group>
+						</group>
+					</sheet>
+					
+				</form>
+			</field>
+		</record>
+
+		<!-- Tree View -->
+		<record id="test_one_tree_view" model="ir.ui.view">
+			<field name="name">Test One Information Tree</field>
+			<field name="model">test.one</field>
+			<field name="arch" type="xml">
+				<tree string="Store Information Tree">
+					<field name="name" />
+					<field name="test_date"/>
+					<field name="test_type"/>
+					<field name="test_price"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Calendar View -->
+        <record id="view_test_calendar" model="ir.ui.view">
+            <field name="name">test.one.calendar</field>
+            <field name="model">test.one</field>
+            <field name="arch" type="xml">
+                <calendar string="Test Calendar" date_start="test_date" mode="day" color="name">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+        
+        
+        <!-- Kanban View -->
+        <record model="ir.ui.view" id="test_one_kanban_View">
+            <field name="name">Kanban View Test</field>
+            <field name="model">test.one</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div>
+                                    <strong>
+                                        <field name="name"/>
+                                        <span class="float-right"><field name="test_date"/></span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <!-- Pivot View -->
+        <record model="ir.ui.view" id="test_one_pivot_View">
+            <field name="name">Pivot View Test</field>
+            <field name="model">test.one</field>
+            <field name="arch" type="xml">
+            	<pivot string="Pivot View">
+            		<field name="test_type" type="row"/>
+            		<field name="name" type="col"/>
+            		<field name="test_price" type="measure"/>	
+            	</pivot>
+            </field>
+        </record>
+        
+        <!-- Graph View -->
+        <record model="ir.ui.view" id="test_one_graph_View">
+            <field name="name">Graph View Test</field>
+            <field name="model">test.one</field>
+            <field name="arch" type="xml">
+            	<graph string="Graph View">
+            		<field name="name"/>
+            		<field name="test_type"/>
+            		<field name="test_price" type="measure"/>	
+            	</graph>
+            </field>
+        </record>
+		
+
+		<!-- Action -->
+		<record id="test_one_menu_action" model="ir.actions.act_window">
+			<field name="name">Test One Information</field>
+			<field name="res_model">test.one</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,calendar,kanban,pivot,graph</field>
+		</record>
+
+		<!-- Action Menu -->
+		<menuitem id="test_one_action_menu" name="Sub Menu 1"
+			sequence="1" parent="menu_first" action="test_one_menu_action" />
+
+	</data>
+</odoo>
